@@ -28,3 +28,7 @@ Comments are added wherever appropriate.
 3. Copy the file names from each category and save it in a <type>.txt file (example:train.txt).
   
 4. Split the train and text from the tsv files using copying.py
+
+<br>
+
+Folder with extracted features and model: https://drive.google.com/drive/folders/1Z8xYeaJzXT3NVaz0tz7ykAz6GwPcfHVs?usp=sharing 
