@@ -8,13 +8,13 @@ By: Sravani Boinepelli (20171050) and Meghana Bommadi (20171165)
 
 ### How to run:
 
-Run *codes/feature_extraction/sgroup_delay.m* for extracting modified group delay features. The output is saved as *gp_<language>_i.txt* (i = ith file)
+Run *'codes/feature_extraction/sgroup_delay.m'* for extracting modified group delay features. The output is saved as *'gp_<language>_i.txt'* (i = ith file)
 
-Run *codes/feature_extraction/inst_features.m* for extracting instaneous amplitude/frequency features. The output is saved as *<ia/if>_<language>_i.txt* (i = ith file)
+Run *'codes/feature_extraction/inst_features.m'* for extracting instaneous amplitude/frequency features. The output is saved as *'<ia/if>_<language>_i.txt'* (i = ith file)
 
-Run *codes/model/labelling.py* to arrange features for each language file and label them accordingly.
+Run *'codes/model/labelling.py'* to arrange features for each language file and label them accordingly.
 
-Run *codes/model/language_detection.ipynb* for viewing the results on a simple SVM model
+Run *'codes/model/language_detection.ipynb'* for viewing the results on a simple SVM model
 
 <br>
 
