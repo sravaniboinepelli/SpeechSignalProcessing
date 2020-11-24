@@ -29,8 +29,10 @@ for k = 1:M
    fprintf(fid2,'%.8f\n', instt_freq);
    fclose(fid2);
 
-   %figure;
-   %subplot(3,1,1), plot(x), title('Modulated signal')
-   %subplot(3,1,2), plot(inst_amp), title('Instantaneous amplitude')
-   %subplot(3,1,3), plot(instt_freq),title('Instantaneous frequency')
+   figure;
+   plot(x), title('Modulated signal')
+   figure;
+   plot(inst_amp), title('Instantaneous amplitude')
+   figure;
+   plot(instt_freq),title('Instantaneous frequency')
 end
