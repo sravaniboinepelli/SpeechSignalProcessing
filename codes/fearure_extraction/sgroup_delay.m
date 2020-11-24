@@ -1,13 +1,16 @@
 clear, clc, close all
 
+% this file must be stored in the folder with all the relevant audio files you want to extract modified group delay features from
+
 file = dir('*.mp3');
 M = length (file);
 for k = 1:M    
     [speech,fs]= audioread(fullfile(file(k).name));
 
-
+    % change rho and gamma to tune your features for better performance
     rho = 0.4;
     gamma = 0.9;
+    % num_coeff represents the desired feature dimension
     num_coeff = 12;
 
     frame_length = 0.025; %msec
@@ -16,14 +19,14 @@ for k = 1:M
     NFFT         = 512;
     pre_emph     = true;
 
-    %%% Pre-emphasis + framing 
+    % Pre-emphasis + framing 
     if (pre_emph)
         speech = filter([1 -0.97], 1, speech);
     end
     frame_length = round((frame_length)*fs);
     frame_shift = round((frame_shift)*fs);
     [frames] = v_enframe(speech, hamming(frame_length), frame_shift);
-    %ts = (ts-1)/fs;
+    %ts = (ts-1)/fs; % ts: time instants at the center of each analysis frame.
 
     frame_num    = size(frames, 1);
     frame_length = size(frames, 2);
@@ -45,10 +48,15 @@ for k = 1:M
     grp_phase1 = (real(x_spec).*real(y_spec) + imag(y_spec) .* imag(x_spec)) ./(exp(smooth_spec).^ (2*rho));
     grp_phase = (grp_phase1 ./ abs(grp_phase1)) .* (abs(grp_phase1).^ gamma);
     grp_phase = grp_phase ./ (max(max(abs(grp_phase))));
+    
+    % grp_phase: modifed gropu delay spectrogram
 
     grp_phase(isnan(grp_phase)) = 0.0;
     %figure;
     %plot(grp_phase);
+
+    % cep: modified group delay cepstral feature.
+
     cep = dct(grp_phase);
     cep = cep(2:num_coeff+1, :)';
     %figure(1);
@@ -57,6 +65,8 @@ for k = 1:M
     %figure;
     %plot(cep);
    
+    % output relevant extracted features/graphs
+
     disp(cep)
     filename = sprintf('gp_kannada_%d.txt',k);     
     fprintf('loop: %i\n',k);

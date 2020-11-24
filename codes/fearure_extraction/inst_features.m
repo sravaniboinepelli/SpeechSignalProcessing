@@ -6,11 +6,11 @@ M = length (file);
 for k = 1:M  
     [x,Fs]= audioread(fullfile(file(k).name)); 
 
-% HILBERT TRANSFORM
+% hilbert transform
    hx = hilbert(x);
-% INSTANTANEOUS AMPLITUDE
+% Instantaneous amplitude
    inst_amp = abs(hx);
-% INSTANTANEOUS FREQUENCY
+% Instantaneous frequency
    instt_freq = diff(unwrap(angle(hx)))/((1/Fs)*2*pi);
 
    
@@ -18,7 +18,7 @@ for k = 1:M
    %fprintf('instant amp \n');
    fprintf('loop:%i',k);
    fid = fopen(filename,'wt');
-   fprintf(fid,'%.8f\n', inst_amp);
+   fprintf(fid,'%.8f\n', inst_amp);  % 8 floating points to avoid getting outputs in scientific notation
    fclose(fid);
 
    
@@ -26,7 +26,7 @@ for k = 1:M
    %fprintf('instant amp \n');
    fprintf('loop:%i',k);
    fid2 = fopen(filename2,'wt');
-   fprintf(fid2,'%.8f\n', instt_freq);
+   fprintf(fid2,'%.8f\n', instt_freq); % 8 floating points to avoid getting outputs in scientific notation
    fclose(fid2);
 
    %figure;
