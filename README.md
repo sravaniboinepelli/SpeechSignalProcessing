@@ -10,7 +10,8 @@ Use the output files from the sgroup_delay(group phase) and inst_freq ( instanta
 
 b.Model running:
 
-2. Process:\n
+2. Process:
+
 a. Data:
 1. Download the data from  https://drive.google.com/drive/folders/1qgM1a-vLCsmMrLv3iJOgOmAyRTwNx7SN
 2. Create train_folder, test_folder, dev_folder in the clips folder of each language
